@@ -13,17 +13,17 @@ function initialize() {
             enabled: false
         },
         query: {
-            select: "col0\x3e\x3e1",
-            from: "1S3bnTRuZaeL7VOJq1FrImOKXH2mW81Et8n3Y-9Q",
+            select: "col0\x3e\x3e2",
+            from: "1JsfBqBIs-A9Buvs-smPqrNn4iBgJ6Ckn7GbONJM",
             where: ""
         },
         options: {
             styleId: 2,
-            templateId: 2
+            templateId: 2,
+            suppressInfoWindows: true
         }
     });
     
-    // Try W3C Geolocation (Preferred)
     if (navigator.geolocation) {
         browserSupportFlag = true;
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -31,6 +31,10 @@ function initialize() {
             map.setCenter(initialLocation);
         });
     }
+    
+    google.maps.event.addListener(layer, 'click', function(e) {
+        return e;
+    });
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
