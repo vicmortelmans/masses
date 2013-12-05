@@ -33,6 +33,7 @@ function initialize() {
     }
     
     google.maps.event.addListener(layer, 'click', function(e) {
+        $("#map-canvas").hide();
         return e;
     });
 }
