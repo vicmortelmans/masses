@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport"></meta>
-        <title>Merge of Kerknet.be-kerken and KerkenInVlaanderen.be-kerkeninvlaanderen static - Google Fusion Tables</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+      <title>Merge of Kerknet.be-kerken and KerkenInVlaanderen.be-kerkeninvlaanderen static - Google Fusion Tables</title>
         <style type="text/css">
+  html { height: 100% }
+  body { height: 100%; margin: 0; padding: 0 }
+  #map-canvas { height: 100% }
 </style>
         
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
@@ -11,15 +14,7 @@
         <script type="text/javascript">
   function initialize() {
     google.maps.visualRefresh = true;
-    var isMobile = (navigator.userAgent.toLowerCase().indexOf('android') > -1) ||
-      (navigator.userAgent.match(/(iPod|iPhone|iPad|BlackBerry|Windows Phone|iemobile)/));
-    if (isMobile) {
-      var viewport = document.querySelector("meta[name=viewport]");
-      viewport.setAttribute('content', 'initial-scale=1.0, user-scalable=no');
-    }
-    var mapDiv = document.getElementById('googft-mapCanvas');
-    mapDiv.style.width = isMobile ? '100%' : '500px';
-    mapDiv.style.height = isMobile ? '100%' : '300px';
+    var mapDiv = document.getElementById('map-canvas');
     var map = new google.maps.Map(mapDiv, {
       center: new google.maps.LatLng(51.213282784793925, 4.427805411499094),
       zoom: 13,
@@ -63,6 +58,6 @@
     </head>
     
     <body>
-        <div id="googft-mapCanvas"></div>
+      <div id="map-canvas"></div>
     </body>
 </html>
