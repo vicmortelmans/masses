@@ -1,0 +1,57 @@
+html, body { background-color: #FFFFFF !important; margin: 0; padding: 0}
+
+@media only screen and (min-width: 550px) {
+    .ui-page {
+        width: 550px !important;
+        margin: 0 auto !important;
+        position: relative !important;
+    }
+    .ui-header-fixed, .ui-footer-fixed {
+        width: 550px !important;
+        margin: 0 auto !important;
+    }
+    .ui-btn {
+        margin-right: 0px !important;
+    }
+    .fullwidthimage  {
+        max-width:550px;
+        display: block;
+    }
+}
+
+.fullwidthimage  {
+    max-width:100%;
+    display: block;
+}
+
+.ui-title {
+    margin: 0.6em 10% 0.8em 5% !important;
+}
+
+html, body {
+    height : 100%;
+}
+
+#map-canvas {
+    height: 100%;
+}
+
+/*make the page element 100% height*/
+#map {
+    height : 100%;
+}
+
+/*specify a height for the header so we can line-up the elements, the default is 40px*/
+#map .ui-header {
+    height : 40px;
+}
+
+/*set the content to be full-width and height except it doesn't overlap the header or footer*/
+#map .ui-content {
+    position : absolute;
+    top      : 40px;
+    right    : 0;
+    bottom   : 30px;
+    left     : 0;
+    padding  : 0;
+}
