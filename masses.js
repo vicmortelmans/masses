@@ -4,7 +4,16 @@ function initialize() {
     var map = new google.maps.Map(mapDiv, {
         center: new google.maps.LatLng(51.213282784793925, 4.427805411499094),
         zoom: 13,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        mapTypeControl: false,
+        panControl: false,
+        zoomControl: true,
+        zoomControlOptions: {
+          style: google.maps.ZoomControlStyle.LARGE,
+          position: google.maps.ControlPosition.LEFT_BOTTOM
+        },
+        scaleControl: false,
+        streetViewControl: false
     });
     
     layer = new google.maps.FusionTablesLayer({
@@ -78,6 +87,8 @@ function initialize() {
             .end()
             .appendTo('#church');
         $("#map-canvas").hide();
+        $("#filter-controls").hide();
+        $("#cards").show();
     });
 }
 

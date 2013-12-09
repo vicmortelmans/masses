@@ -1,35 +1,9 @@
-html, body { background-color: #FFFFFF !important; margin: 0; padding: 0}
-
-@media only screen and (min-width: 550px) {
-    .ui-page {
-        width: 550px !important;
-        margin: 0 auto !important;
-        position: relative !important;
-    }
-    .ui-header-fixed, .ui-footer-fixed {
-        width: 550px !important;
-        margin: 0 auto !important;
-    }
-    .ui-btn {
-        margin-right: 0px !important;
-    }
-    .fullwidthimage  {
-        max-width:550px;
-        display: block;
-    }
-}
-
-.fullwidthimage  {
-    max-width:100%;
-    display: block;
-}
-
-.ui-title {
-    margin: 0.6em 10% 0.8em 5% !important;
-}
-
 html, body {
+    font: 14pt Roboto,Arial,sans-serif;
     height : 100%;
+    background-color: #FFFFFF !important; 
+    margin: 0; 
+    padding: 0;
 }
 
 #map-canvas {
@@ -37,6 +11,33 @@ html, body {
 }
 #cards {
     width: 100%;
-    height: 100%;
+}
+#filter-controls {
     position: fixed;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    padding: 3px 5px;
+    z-index: 1;
+    background-color: white;
+}
+#filter-controls h1 {
+    font: 14pt Roboto,Arial,sans-serif;
+    margin: 0;
+}
+#filter-controls span {
+    color: #619ce5;
+}
+#cards {
+    display: none;
+    padding: 3px 5px;
+}
+.reconciled {
+    font-weight: bold;
+}
+.diocese {
+    color: darkgray;
+}
+.dayAnTime {
+    font-weight: bold;
 }
