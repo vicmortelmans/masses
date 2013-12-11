@@ -1,3 +1,6 @@
+var tableId = '1JsfBqBIs-A9Buvs-smPqrNn4iBgJ6Ckn7GbONJM';
+var locationColumn = 'col0\x3e\x3e2';
+
 function initialize() {
     google.maps.visualRefresh = true;
     var mapDiv = document.getElementById('map-canvas');
@@ -10,7 +13,7 @@ function initialize() {
         zoomControl: true,
         zoomControlOptions: {
           style: google.maps.ZoomControlStyle.LARGE,
-          position: google.maps.ControlPosition.LEFT_BOTTOM
+          position: google.maps.ControlPosition.LEFT_CENTER
         },
         scaleControl: false,
         streetViewControl: false
@@ -22,8 +25,8 @@ function initialize() {
             enabled: false
         },
         query: {
-            select: "col0\x3e\x3e2",
-            from: "1JsfBqBIs-A9Buvs-smPqrNn4iBgJ6Ckn7GbONJM",
+            select: locationColumn,
+            from: tableId,
             where: ""
         },
         options: {
@@ -42,6 +45,8 @@ function initialize() {
     }
     
     google.maps.event.addListener(layer, 'click', function(e) {
+        $('#church .content').empty();
+        $('#masses').empty();
         var query = "SELECT * FROM %table WHERE Reconciled = '%Reconciled'";
         query = query.replace('%table','1JsfBqBIs-A9Buvs-smPqrNn4iBgJ6Ckn7GbONJM');
         query = query.replace('%Reconciled',e.row.Reconciled.value);
@@ -56,7 +61,7 @@ function initialize() {
             dataType: 'jsonp'
         })
             .done(function(data) {
-                    var mass = $('<div><div class="dayAndTime"/><span class="day"/> <span class="time"/></div><div class="worship"/></div>');
+                    var mass = $('<div class="mass"><div class="dayAndTime"><span class="day"/> <span class="time"/></div><div class="worship"/></div>');
                     $.each(data.rows, function() {
                         mass.clone()
                             .find('.day')
@@ -71,7 +76,7 @@ function initialize() {
                             .appendTo('#masses');
                     });
             });
-        var church = $('<div><div class="reconciled"/><div class="diocese"/><div class="phone"/><div class="url"><a>Website</a></div></div>');
+        var church = $('<div class="church"><div class="reconciled"/><div class="diocese"/><div class="phone"/><div class="url"><a>Website</a></div></div>');
         church.clone()
             .find('.reconciled')
                 .text(e.row['Reconciled'].value)
@@ -85,11 +90,33 @@ function initialize() {
             .find('.url a')
                 .attr('href', e.row['URL'].value)
             .end()
-            .appendTo('#church');
-        $("#map-canvas").hide();
+            .appendTo('#church .content');
         $("#filter-controls").hide();
-        $("#cards").show();
+        $("#church").show();
+        $("#masses").hide();
+        $('#cards').attr('class', 'bottom');
+    });
+
+    $('#church .close').on('click', function() {
+        $("#filter-controls").show();
+        $('#cards').attr('class', 'hidden');
+    });
+   
+    $('#church .down').on('click', function() {
+        $('#cards').attr('class', 'fullscreen');
+        $("#masses").show();
+    });
+   
+    $('#vandaag').on('click', function() {
+        layer.setOptions({
+            query: {
+                select: locationColumn,
+                from: tableId,
+                where: "Timestamp < 600"
+            }
+        });
     });
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+

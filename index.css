@@ -1,7 +1,6 @@
 html, body {
-    font: 14pt Roboto,Arial,sans-serif;
+    font: 12pt Roboto,Arial,sans-serif;
     height : 100%;
-    background-color: #FFFFFF !important; 
     margin: 0; 
     padding: 0;
 }
@@ -22,22 +21,65 @@ html, body {
     background-color: white;
 }
 #filter-controls h1 {
-    font: 14pt Roboto,Arial,sans-serif;
+    font: 12pt Roboto,Arial,sans-serif;
     margin: 0;
 }
 #filter-controls span {
     color: #619ce5;
 }
 #cards {
-    display: none;
-    padding: 3px 5px;
+    background-color: white;
+    position: absolute;
 }
-.reconciled {
-    font-weight: bold;
+#cards.hidden {
+    display: none;
+}
+#cards.bottom {
+    bottom: 0px;
+    border-bottom: 0px;
+}
+#cards.fullscreen {
+    top: 0px;
+    height: 100%;
+}
+.mass , .church {
+    border-bottom: 1px solid #e6e6e6;
+}
+#church {
+    position: relative;
+}
+#church .close {
+    position: absolute;
+    right: 0px;
+    top: 9px;
+    background-image: url('icon-close.png');
+    width: 22px;
+    height: 22px;
+}
+#church .down {
+    position: absolute;
+    right: 0px;
+    bottom: 9px;
+    background-image: url('icon-down.png');
+    width: 22px;
+    height: 22px;
+}
+#cards.fullscreen #church .down {
+    display: none;
+}
+.church {
+    margin: 0px 5px;
+    padding: 9px 0px;
+}
+.bottom .church {
+    border-bottom: 0px;    
+}
+.mass {
+    margin: 0px 5px 0px 12px;
+    padding: 6px 0px 6px 0px;
 }
 .diocese {
-    color: darkgray;
+    color: #999;
 }
 .dayAnTime {
-    font-weight: bold;
 }

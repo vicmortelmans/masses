@@ -15,14 +15,18 @@
     <div id="filter-controls">
       <h1>Waar kan ik naar de mis?</h1>
       <div>
-        <span>Meteen</span>
-        <span>Vandaag</span>
-        <span>Morgen</span>
+        <span id="meteen">Meteen</span>
+        <span id="vandaag">Vandaag</span>
+        <span id="morgen">Morgen</span>
       </div>
     </div>
     <div id="map-canvas"></div>
-    <div id="cards">
-      <div id="church"></div>
+    <div id="cards" class="hidden">
+      <div id="church">
+        <div class="content"></div>
+        <div class="close"></div>
+        <div class="down"></div>
+      </div>
       <div id="masses"></div>
     </div>
     <script src="masses.js"></script>
