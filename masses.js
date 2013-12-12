@@ -82,7 +82,7 @@ function initialize() {
                             .appendTo('#masses');
                     });
             });
-        var church = $('<div class="church"><div class="reconciled"/><div class="diocese"/><div class="phone"/><div class="url"><a><img src="icon-link.png"/></a></div></div>');
+        var church = $('<div class="church"><div class="reconciled"/><div class="diocese"/><div><span class="phone"/><span class="url"><a><img src="icon-link.png"/></a></span></div></div>');
         church.clone()
             .find('.reconciled')
                 .text(e.row['Reconciled'].value)
@@ -155,7 +155,7 @@ function initialize() {
     addFilterControl('#morgen', function() {
         return "Timestamp > " + midnight + " and Timestamp < " + (midnight + 24*60);
     });
-    
+
     updateNowAndMidnight();
     return;
 }
