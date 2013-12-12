@@ -82,7 +82,7 @@ function initialize() {
                             .appendTo('#masses');
                     });
             });
-        var church = $('<div class="church"><div class="reconciled"/><div class="diocese"/><div class="phone"/><div class="url"><a>Website</a></div></div>');
+        var church = $('<div class="church"><div class="reconciled"/><div class="diocese"/><div class="phone"/><div class="url"><a><img src="icon-link.png"/></a></div></div>');
         church.clone()
             .find('.reconciled')
                 .text(e.row['Reconciled'].value)
@@ -98,8 +98,6 @@ function initialize() {
             .end()
             .appendTo('#church .content');
         $("#filter-controls").hide();
-        $("#church").show();
-        $("#masses").hide();
         $('#cards').attr('class', 'bottom');
         return;
     });
@@ -112,7 +110,6 @@ function initialize() {
    
     $('#church .down').on('click', function() {
         $('#cards').attr('class', 'fullscreen');
-        $("#masses").show();
         return;
     });
     $('body').on('click', '#cards.fullscreen .content', function() {

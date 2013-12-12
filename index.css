@@ -79,6 +79,9 @@ html, body {
 .bottom .church {
     border-bottom: 0px;    
 }
+#cards.bottom .mass {
+    display: none;
+}
 .mass {
     margin: 0px 5px 0px 12px;
     padding: 6px 0px 6px 0px;
