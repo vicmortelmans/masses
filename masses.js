@@ -1,5 +1,6 @@
 var tableId = '1JsfBqBIs-A9Buvs-smPqrNn4iBgJ6Ckn7GbONJM';
 var locationColumn = 'col0\x3e\x3e2';
+var now, midnight;
 
 function initialize() {
     google.maps.visualRefresh = true;
@@ -107,16 +108,61 @@ function initialize() {
         $("#masses").show();
     });
    
-    $('#vandaag').on('click', function() {
-        layer.setOptions({
-            query: {
-                select: locationColumn,
-                from: tableId,
-                where: "Timestamp < 600"
+    function addFilterControl(id, query) {
+        $(id).on('click', function() {
+            if ( $(this).hasClass('active') ) {
+                $(this).removeClass('active');
+                layer.setOptions({
+                    query: {
+                        select: locationColumn,
+                        from: tableId,
+                        where: ""
+                    }
+                });
+            } else {
+                $('#filter-controls span').removeClass('active');
+                $(this).addClass('active');
+                layer.setOptions({
+                    query: {
+                        select: locationColumn,
+                        from: tableId,
+                        where: query()
+                    }
+                });
             }
         });
+    }
+    
+    addFilterControl('#meteen', function() {
+        return "Timestamp > " + now + " and Timestamp < " + (now + 60);
     });
+    addFilterControl('#vandaag', function() {
+        return "Timestamp > " + now + " and Timestamp < " + midnight;
+    });
+    addFilterControl('#morgen', function() {
+        return "Timestamp > " + midnight + " and Timestamp < " + (midnight + 24*60);
+    });
+    
+    updateNowAndMidnight();
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
+function timestamp(day, hours, minutes) {
+    // day = 0 for Sunday, 1 for Monday etc...
+    var dayInMinutes = 24*60;
+    var t = 0;
+    t += day*dayInMinutes;
+    t += 60*hours + minutes;
+    return t;
+}
+
+function updateNowAndMidnight() {
+    var n = new Date();
+    var d = n.getDay();
+    var h = n.getHours();
+    var m = n.getMinutes();
+    now = timestamp(d,h,m);
+    midnight = timestamp(d+1 < 7 ? d+1 : 0,0,0);
+    setTimeout(updateNowAndMidnight, 1000);
+}

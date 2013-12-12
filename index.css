@@ -16,16 +16,21 @@ html, body {
     top: 5px;
     left: 5px;
     right: 5px;
-    padding: 3px 5px;
     z-index: 1;
     background-color: white;
 }
 #filter-controls h1 {
     font: 12pt Roboto,Arial,sans-serif;
+    padding: 3px 5px;
     margin: 0;
 }
 #filter-controls span {
     color: #619ce5;
+    padding: 3px 5px;
+}
+#filter-controls .active {
+    background-color: #619ce5;
+    color: white;
 }
 #cards {
     background-color: white;
