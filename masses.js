@@ -30,6 +30,11 @@ function initialize() {
             from: tableId,
             where: ""
         },
+        styles: [{          
+            markerOptions: {           
+               iconName: "large_green"         
+            }       
+         }],
         options: {
             styleId: 2,
             templateId: 2,
@@ -96,16 +101,27 @@ function initialize() {
         $("#church").show();
         $("#masses").hide();
         $('#cards').attr('class', 'bottom');
+        return;
     });
 
     $('#church .close').on('click', function() {
         $("#filter-controls").show();
         $('#cards').attr('class', 'hidden');
+        return;
     });
    
     $('#church .down').on('click', function() {
         $('#cards').attr('class', 'fullscreen');
         $("#masses").show();
+        return;
+    });
+    $('body').on('click', '#cards.fullscreen .content', function() {
+        $('#cards').attr('class', 'bottom');
+        return;
+    });
+    $('body').on('click', '#cards.bottom .content', function() {
+        $('#cards').attr('class', 'fullscreen');
+        return;
     });
    
     function addFilterControl(id, query) {
@@ -134,7 +150,7 @@ function initialize() {
     }
     
     addFilterControl('#meteen', function() {
-        return "Timestamp > " + now + " and Timestamp < " + (now + 60);
+        return "Timestamp > " + (now - 15) + " and Timestamp < " + (now + 60);
     });
     addFilterControl('#vandaag', function() {
         return "Timestamp > " + now + " and Timestamp < " + midnight;
@@ -144,6 +160,7 @@ function initialize() {
     });
     
     updateNowAndMidnight();
+    return;
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
@@ -165,4 +182,5 @@ function updateNowAndMidnight() {
     now = timestamp(d,h,m);
     midnight = timestamp(d+1 < 7 ? d+1 : 0,0,0);
     setTimeout(updateNowAndMidnight, 1000);
+    return;
 }
