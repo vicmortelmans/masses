@@ -8,7 +8,7 @@
         Credomobiel
     </author>
     <gap:platform name="android" />
-    <gap:splash src="splash.png" width="320" height="480" />
+    <gap:splash src="masses-splash.png" width="320" height="480" />
     <feature name="http://api.phonegap.com/1.0/device" />
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
