@@ -150,7 +150,9 @@ function initialize() {
         return "Timestamp > " + (now - 15) + " and Timestamp < " + (now + 60);
     });
     addFilterControl('#vandaag', function() {
-        return "Timestamp > " + now + " and Timestamp < " + midnight;
+        // on Saturday midnight is 0 !
+        var midnight24 = midnight === 0 ? 7*24*60 : midnight;
+        return "Timestamp > " + now + " and Timestamp < " + midnight24;
     });
     addFilterControl('#morgen', function() {
         return "Timestamp > " + midnight + " and Timestamp < " + (midnight + 24*60);
