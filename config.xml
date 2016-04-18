@@ -4,8 +4,8 @@
     <description>
         Waar kan ik naar de mis gaan?
     </description>
-    <author email="info@credomobiel.net" href="http://credomobiel.net">
-        Credomobiel
+    <author email="info@gelovenleren.net" href="http://gelovenleren.net">
+        Geloven Leren
     </author>
     <gap:platform name="android" />
     <gap:splash src="masses-splash.png" width="320" height="480" />
@@ -33,5 +33,6 @@
     <icon src="favicon96.png" gap:platform="android" gap:density="xhdpi" />
     -->
     <access origin="http://127.0.0.1*" />
-    <access origin="*" />
+    <access origin="http://naar-de-mis.maptiming.com/" />
+    <content src="http://naar-de-mis.maptiming.com/" />
 </widget>
